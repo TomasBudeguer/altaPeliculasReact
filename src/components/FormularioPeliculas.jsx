@@ -1,7 +1,9 @@
 import { Form, Button, FloatingLabel } from "react-bootstrap";
+import ListaPeliculas from "./ListaPeliculas";
 
 const FormularioPeliculas = () => {
   return (
+    <div>
     <Form>
       <Form.Group className="mb-3" controlId="formBasicNombre">
         <Form.Label>Nombre</Form.Label>
@@ -29,6 +31,8 @@ const FormularioPeliculas = () => {
         Enviar
       </Button>
     </Form>
+    <ListaPeliculas></ListaPeliculas>
+    </div>
   );
 };
 
