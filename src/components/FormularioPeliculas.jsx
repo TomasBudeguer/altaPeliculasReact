@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import ListaPeliculas from "./ListaPeliculas";
 
 const FormularioPeliculas = () => {
+  const peliculasLocalStorage =
+    JSON.parse(localStorage.getItem("arregloPeliculasKey")) || [];
+
   const [nombre, setNombre] = useState("");
   const [imagen, setImagen] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [genero, setGenero] = useState("");
-  const [arregloPeliculas, setArregloPeliculas] = useState([]);
+  const [arregloPeliculas, setArregloPeliculas] = useState(peliculasLocalStorage);
 
   const UrlRegExp = new RegExp(/^https?:\/\/[\w]+(\.[\w]+)+[/#?]?.*$/);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "arregloPeliculasKey",
+      JSON.stringify(arregloPeliculas)
+    );
+  }, [arregloPeliculas]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,9 +41,9 @@ const FormularioPeliculas = () => {
   };
 
   const borrarPelicula = (pelicula) => {
-    let arregloModif = arregloPeliculas.filter((item) => item !== pelicula)
-    setArregloPeliculas(arregloModif)
-  }
+    let arregloModif = arregloPeliculas.filter((item) => item !== pelicula);
+    setArregloPeliculas(arregloModif);
+  };
 
   return (
     <div>
@@ -85,7 +95,10 @@ const FormularioPeliculas = () => {
           Enviar
         </Button>
       </Form>
-      <ListaPeliculas arregloPeliculas={arregloPeliculas} borrarPelicula={borrarPelicula}></ListaPeliculas>
+      <ListaPeliculas
+        arregloPeliculas={arregloPeliculas}
+        borrarPelicula={borrarPelicula}
+      ></ListaPeliculas>
     </div>
   );
 };
