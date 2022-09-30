@@ -30,6 +30,11 @@ const FormularioPeliculas = () => {
     }
   };
 
+  const borrarPelicula = (pelicula) => {
+    let arregloModif = arregloPeliculas.filter((item) => item !== pelicula)
+    setArregloPeliculas(arregloModif)
+  }
+
   return (
     <div>
       <Form onSubmit={handleSubmit}>
@@ -80,7 +85,7 @@ const FormularioPeliculas = () => {
           Enviar
         </Button>
       </Form>
-      <ListaPeliculas arregloPeliculas={arregloPeliculas}></ListaPeliculas>
+      <ListaPeliculas arregloPeliculas={arregloPeliculas} borrarPelicula={borrarPelicula}></ListaPeliculas>
     </div>
   );
 };
