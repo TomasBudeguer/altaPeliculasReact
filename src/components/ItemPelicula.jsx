@@ -1,16 +1,28 @@
-import { Card } from "react-bootstrap";
+import { Card, Button, Badge } from "react-bootstrap";
 
-const ItemPelicula = () => {
+const ItemPelicula = ({ pelicula, nombre, imagen, descripcion, genero }) => {
   return (
     <div className="col-sm-12 col-md-4 col-lg-3">
       <Card>
-        <Card.Img variant="top" src="" />
+        <Card.Img variant="top" src={imagen}/>
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <div className="d-flex justify-content-between">
+            <aside>
+              <Card.Title>{nombre}</Card.Title>
+            </aside>
+            <aside>
+              <Badge bg="danger" className="text-center fs-6">
+                {genero}
+              </Badge>
+            </aside>
+          </div>
           <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            {descripcion}
           </Card.Text>
+          <hr />
+          <div className="text-center">
+            <Button variant="primary">Borrar</Button>
+          </div>
         </Card.Body>
       </Card>
     </div>
