@@ -55,6 +55,7 @@ const FormularioPeliculas = () => {
             placeholder="Spider Man"
             onChange={(e) => setNombre(e.target.value)}
             value={nombre}
+            required
           />
         </Form.Group>
         <Form.Group className="mb-3" controlId="formBasicImagen">
@@ -64,6 +65,7 @@ const FormularioPeliculas = () => {
             placeholder="https://es.web.img2.acsta.net/pictures/19/11/12/12/25/0815514.jpg"
             onChange={(e) => setImagen(e.target.value)}
             value={imagen}
+            required
           />
         </Form.Group>
         <FloatingLabel
@@ -76,6 +78,7 @@ const FormularioPeliculas = () => {
             placeholder="Escribe la descripcion aca"
             onChange={(e) => setDescripcion(e.target.value)}
             value={descripcion}
+            required
           />
         </FloatingLabel>
         <FloatingLabel controlId="floatingSelect" label="Genero:">
@@ -84,6 +87,7 @@ const FormularioPeliculas = () => {
             className="mb-3"
             onChange={(e) => setGenero(e.target.value)}
             value={genero}
+            required
           >
             <option>Seleccione el genero</option>
             <option value="Comedia">Comedia</option>
